@@ -1,5 +1,5 @@
 {
-    "name": "phine/doc",
+    "name": "phine/bench",
     "description": "A PHP library for running timed tests.",
     "keywords": ["benchmark","test"],
     "homepage": "https://github.com/phine/lib-bench",
