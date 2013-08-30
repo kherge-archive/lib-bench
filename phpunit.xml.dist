@@ -6,19 +6,18 @@
     </whitelist>
   </filter>
   <logging>
-    <!-- <log type="coverage-clover" target="/tmp/coverage.xml"/> -->
+    <log type="coverage-clover" target="/tmp/coverage.xml"/>
     <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
   </logging>
-  <!--
   <listeners>
     <listener class="League\PHPUnitCoverageListener\Listener">
       <arguments>
         <array>
           <element key="namespace">
-            <string>Phine\Exception</string>
+            <string>Phine\Bench</string>
           </element>
           <element key="repo_token">
-            <string>?</string>
+            <string>ilT6xoE3qnS3t5lMjelouvncOWkeyFnWz</string>
           </element>
           <element key="target_url">
             <string>https://coveralls.io/api/v1/jobs</string>
@@ -36,7 +35,6 @@
       </arguments>
     </listener>
   </listeners>
-  -->
   <testsuites>
     <testsuite name="Phine Bench Test Suite">
       <directory phpVersion="5.3.3" phpVersionOperator=">=" suffix="Test.php">src/tests/</directory>
