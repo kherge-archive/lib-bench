@@ -109,9 +109,12 @@ class Test
     /**
      * Sets the test setup callable.
      *
-     * A setup callable will return
+     * A setup callable will return an array of arguments that will be passed
+     * on to the test callable. This setup process is useful if it is unique
+     * to the test, but must not be counted as part of the time used in the
+     * benchmark.
      *
-     * @param callable $setup ?
+     * @param callable $setup The setup callable.
      *
      * @return Test The `Test` instance.
      */
