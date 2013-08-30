@@ -31,11 +31,26 @@ $suite['key'] = new Test(
     }
 );
 
+$suite['setup'] = Test::create(
+    function ($sleep, $usleep) {
+        sleep($sleep);
+        usleep($usleep);
+    }
+)->setSetup(
+    function () {
+        return array(
+            rand(0, 2),
+            rand(500, 1000)
+        );
+    }
+);
+
 list($total, $times) = $suite->run();
 
-echo $total;        // 1.0014040470123
-echo $times[0];     // 0.00064706802368164
-echo $times['key']; // 1.0007569789886
+echo $total, "\n";          // 3.003720998764
+echo $times[0], "\n";       // 0.0012569427490234
+echo $times['key'], "\n";   // 1.0002269744873
+echo $times['setup'], "\n"; // 2.0022370815277
 ```
 
 Requirement
