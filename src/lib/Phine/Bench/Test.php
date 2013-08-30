@@ -20,6 +20,13 @@ class Test
     private static $offset;
 
     /**
+     * The setup for the test.
+     *
+     * @var callable
+     */
+    private $setup;
+
+    /**
      * The test to perform.
      *
      * @var callable
@@ -67,18 +74,52 @@ class Test
      * Runs the test and returns the amount of time it took to complete.
      *
      * @return float The amount of time taken in microseconds.
+     *
+     * @throws Exception
+     * @throws BenchException If the setup return value is not an array.
      */
     public function run()
     {
-        $start = microtime(true);
+        if ($this->setup) {
+            $setup = call_user_func($this->setup);
 
-        call_user_func($this->test);
+            if (!is_array($setup)) {
+                throw BenchException::createUsingFormat(
+                    'Expected an array from the setup callable, %s received.',
+                    gettype($setup)
+                );
+            }
+
+            $start = microtime(true);
+
+            call_user_func_array($this->test, $setup);
+        } else {
+            $start = microtime(true);
+
+            call_user_func($this->test);
+        }
 
         $finish = microtime(true);
         $finish -= $start;
         $finish -= self::$offset;
 
         return $finish;
+    }
+
+    /**
+     * Sets the test setup callable.
+     *
+     * A setup callable will return
+     *
+     * @param callable $setup ?
+     *
+     * @return Test The `Test` instance.
+     */
+    public function setSetup($setup)
+    {
+        $this->setup = $setup;
+
+        return $this;
     }
 
     /**

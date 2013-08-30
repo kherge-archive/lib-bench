@@ -68,4 +68,75 @@ class TestTest extends TestCase
         $this->assertGreaterThan(0.0005, $time);
         $this->assertLessThan(0.01, $time);
     }
+
+    /**
+     * Make sure that the setup callable is called, and that the returned
+     * value is all passed to the test callable. The method should still
+     * return the time it took to complete the test.
+     */
+    public function testRunSetup()
+    {
+        $args = array();
+        $count = 0;
+
+        $test = new Test(
+            function ($a, $b, $c) use (&$args) {
+                $args[] = array($a, $b, $c);
+            }
+        );
+
+        set(
+            $test,
+            'setup',
+            function () use (&$count) {
+                return array($count++, $count++, $count++);
+            }
+        );
+
+        $this->assertInternalType('float', $test->run());
+
+        $test->run();
+
+        $this->assertEquals(array(0, 1, 2), $args[0]);
+        $this->assertEquals(array(3, 4, 5), $args[1]);
+    }
+
+    /**
+     * Make sure that only an array is returned by the setup callable.
+     */
+    public function testRunSetupInvalid()
+    {
+        $test = new Test(function () {});
+
+        set(
+            $test,
+            'setup',
+            function () {
+                return 123;
+            }
+        );
+
+        $this->setExpectedException(
+            'Phine\\Bench\\Exception\\BenchException',
+            'Expected an array from the setup callable, integer received.'
+        );
+
+        $test->run();
+    }
+
+    /**
+     * Make sure that we can set the setup callable. Also make sure that the
+     * `setSetup()` method returns the instance it was called on. This should
+     * make it easier to add tests to the suite, while also setting the setup
+     * callable.
+     */
+    public function testSetSetup()
+    {
+        $test = new Test(function () {});
+
+        $setup = function () {};
+
+        $this->assertSame($test, $test->setSetup($setup));
+        $this->assertSame($setup, get($test, 'setup'));
+    }
 }
