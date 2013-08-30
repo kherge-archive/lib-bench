@@ -56,6 +56,14 @@ class Test
     }
 
     /**
+     * @see Test::__construct
+     */
+    public static function create($test)
+    {
+        return new self($test);
+    }
+
+    /**
      * Runs the test and returns the amount of time it took to complete.
      *
      * @return float The amount of time taken in microseconds.

@@ -42,6 +42,17 @@ class TestTest extends TestCase
     }
 
     /**
+     * Make sure that a new instance of `Test` is returned by `create()`.
+     */
+    public function testCreate()
+    {
+        $callback = function () {};
+
+        $this->assertInstanceOf('Phine\\Bench\\Test', Test::create($callback));
+        $this->assertNotSame(Test::create($callback), Test::create($callback));
+    }
+
+    /**
      * Ensure that the amount of time taken is returned.
      */
     public function testRun()
