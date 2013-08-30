@@ -42,6 +42,7 @@ Requirement
 -----------
 
 - PHP >= 5.3.3
+- [Phine Exception][] >= 1.0
 
 Installation
 ------------
@@ -59,4 +60,5 @@ This library is available under the [MIT license](LICENSE).
 [Coverage Status]: https://coveralls.io/repos/phine/lib-bench/badge.png
 [Latest Stable Version]: https://poser.pugx.org/phine/bench/v/stable.png
 [Total Downloads]: https://poser.pugx.org/phine/bench/downloads.png
+[Phine Exception]: https://github.com/phine/lib-exception
 [Composer]: http://getcomposer.org/
