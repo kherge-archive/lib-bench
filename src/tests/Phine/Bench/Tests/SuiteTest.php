@@ -114,7 +114,7 @@ class SuiteTest extends TestCase
     {
         $this->setExpectedException(
             'Phine\\Bench\\Exception\\BenchException',
-            'Only instances of Phine\\Bench\\Test are accepted as values.'
+            'Only instances of Phine\\Bench\\TestInterface are accepted as values.'
         );
 
         $this->suite[] = 123;

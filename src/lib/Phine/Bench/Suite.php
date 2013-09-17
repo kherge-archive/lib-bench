@@ -7,6 +7,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Phine\Bench\Exception\BenchException;
+use Phine\Exception\Exception;
 
 /**
  * Manages a suite of individual tests.
@@ -18,7 +19,7 @@ class Suite implements ArrayAccess, Countable, IteratorAggregate
     /**
      * The suite of tests.
      *
-     * @var Test[]
+     * @var TestInterface[]
      */
     private $tests = array();
 
@@ -57,13 +58,14 @@ class Suite implements ArrayAccess, Countable, IteratorAggregate
     /**
      * {@inheritDoc}
      *
+     * @throws Exception
      * @throws BenchException If the value is not a `Test` instance.
      */
     public function offsetSet($offset, $value)
     {
-        if (!($value instanceof Test)) {
+        if (!($value instanceof TestInterface)) {
             throw new BenchException(
-                'Only instances of Phine\\Bench\\Test are accepted as values.'
+                'Only instances of Phine\\Bench\\TestInterface are accepted as values.'
             );
         }
 

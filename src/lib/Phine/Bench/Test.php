@@ -6,11 +6,11 @@ use Phine\Bench\Exception\BenchException;
 use Phine\Exception\Exception;
 
 /**
- * Manages the execution of an individual test.
+ * Manages the execution of an individual callable as a test case.
  *
  * @author Kevin Herrera <kevin@herrera.io>
  */
-class Test
+class Test implements TestInterface
 {
     /**
      * The time to offset for compensation.
@@ -71,12 +71,7 @@ class Test
     }
 
     /**
-     * Runs the test and returns the amount of time it took to complete.
-     *
-     * @return float The amount of time taken in microseconds.
-     *
-     * @throws Exception
-     * @throws BenchException If the setup return value is not an array.
+     * {@inheritDoc}
      */
     public function run()
     {
