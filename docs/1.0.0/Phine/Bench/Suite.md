@@ -79,7 +79,7 @@ The class defines the following methods:
     - `$value`
 - It does not return anything.
 - It throws one of the following exceptions:
-    - [`BenchException`](http://php.net/class.BenchException) &mdash; If the value is not a `Test` instance.
+    - `BenchException` &mdash; If the value is not a `Test` instance.
 
 ### `offsetUnset()` <a name="offsetUnset"></a>
 

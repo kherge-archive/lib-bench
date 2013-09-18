@@ -35,11 +35,11 @@ timing for the test.
 
 - It is a **public** method.
 - It accepts the following parameter(s):
-    - `$test` ([`callable`](http://php.net/class.Phine\Bench\callable)) &mdash; The test to perform.
+    - `$test` (`Phine\Bench\callable`) &mdash; The test to perform.
 - It does not return anything.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`BenchException`](http://php.net/class.BenchException) &mdash; If `$test` is not valid.
+    - [`Exception`](http://php.net/class.Exception)
+    - `BenchException` &mdash; If `$test` is not valid.
 
 ### `create()` <a name="create"></a>
 
@@ -61,10 +61,10 @@ Runs the test and returns the amount of time it took to complete.
 #### Signature
 
 - It is a **public** method.
-- It returns a(n) [`float`](http://php.net/class.Phine\Bench\float) value.
+- It returns a(n) `Phine\Bench\float` value.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`BenchException`](http://php.net/class.BenchException) &mdash; If the setup return value is not an array.
+    - [`Exception`](http://php.net/class.Exception)
+    - `BenchException` &mdash; If the setup return value is not an array.
 
 ### `setSetup()` <a name="setSetup"></a>
 
@@ -81,6 +81,6 @@ benchmark.
 
 - It is a **public** method.
 - It accepts the following parameter(s):
-    - `$setup` ([`callable`](http://php.net/class.Phine\Bench\callable)) &mdash; The setup callable.
+    - `$setup` (`Phine\Bench\callable`) &mdash; The setup callable.
 - It returns a(n) [`Test`](../../Phine/Bench/Test.md) value.
 

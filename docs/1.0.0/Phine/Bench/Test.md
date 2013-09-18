@@ -33,11 +33,11 @@ timing for the test.
 
 - It is a **public** method.
 - It accepts the following parameter(s):
-    - `$test` ([`callable`](http://php.net/class.Phine\Bench\callable)) &mdash; The test to perform.
+    - `$test` (`Phine\Bench\callable`) &mdash; The test to perform.
 - It does not return anything.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`BenchException`](http://php.net/class.BenchException) &mdash; If `$test` is not valid.
+    - [`Exception`](http://php.net/class.Exception)
+    - `BenchException` &mdash; If `$test` is not valid.
 
 ### `run()` <a name="run"></a>
 
@@ -46,5 +46,5 @@ Runs the test and returns the amount of time it took to complete.
 #### Signature
 
 - It is a **public** method.
-- It returns a(n) [`float`](http://php.net/class.Phine\Bench\float) value.
+- It returns a(n) `Phine\Bench\float` value.
 

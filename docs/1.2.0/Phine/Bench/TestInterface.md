@@ -24,8 +24,8 @@ Runs the test and returns the amount of time it took to complete.
 #### Signature
 
 - It is a **public** method.
-- It returns a(n) [`float`](http://php.net/class.Phine\Bench\float) value.
+- It returns a(n) `Phine\Bench\float` value.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`BenchException`](http://php.net/class.BenchException) &mdash; If the setup return value is not an array.
+    - [`Exception`](http://php.net/class.Exception)
+    - `BenchException` &mdash; If the setup return value is not an array.
 
